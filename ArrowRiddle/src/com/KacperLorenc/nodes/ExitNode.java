@@ -4,6 +4,8 @@ import com.KacperLorenc.game.Game;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+//this node lets the user exit the game
+
 public class ExitNode extends Node {
     public ExitNode(double x, double y, double width, double height, Game game) {
         super(x, y, width, height);

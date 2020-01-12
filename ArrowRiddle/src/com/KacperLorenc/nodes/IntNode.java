@@ -3,6 +3,8 @@ package com.KacperLorenc.nodes;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+//this node will hold a numeric value
+
 public class IntNode extends Node {
     int value;
 

@@ -18,18 +18,22 @@ import java.io.IOException;
 import java.util.*;
 
 public class Game {
-    private Group root;
-    private Arrows arrows;
+
+    protected Group root;
+    protected Arrows arrows;
     public int length;
 
+    public enum gameType{
+        NEW_GAME, LOADED_GAME, CUSTOM_GAME;
+    }
 
-    private static final double WIDTH = 800;
-    private static final double HEIGHT = 600;
+    protected static final double WIDTH = 800;
+    protected static final double HEIGHT = 600;
 
-    private ArrayList<ArrowNode> leftArrows;
-    private ArrayList<ArrowNode> rightArrows;
-    private ArrayList<ArrowNode> topArrows;
-    private ArrayList<ArrowNode> bottomArrows;
+    protected ArrayList<ArrowNode> leftArrows;
+    protected ArrayList<ArrowNode> rightArrows;
+    protected ArrayList<ArrowNode> topArrows;
+    protected ArrayList<ArrowNode> bottomArrows;
 
     private ArrowArray up;
     private ArrowArray down;
@@ -37,51 +41,26 @@ public class Game {
     private ArrowArray right;
     private NumbersArray numbersArray;
 
-    private boolean checkWin(ArrowArray up, ArrowArray down, ArrowArray left, ArrowArray right) {
+    //Constructors
 
-        int i = 0;
-        while (i < up.getLength()) {
-            if (up.getCharAt(i) != topArrows.get(i).getValue()) {
-                return false;
-            }
-            if (right.getCharAt(i) != rightArrows.get(i).getValue()) {
-                return false;
-            }
-            if (left.getCharAt(i) != leftArrows.get(i).getValue()) {
-                return false;
-            }
-            if (down.getCharAt(i) != bottomArrows.get(i).getValue()) {
-                return false;
-            }
-            i++;
-        }
-        return true;
+    protected Game(Group root, int length, Arrows arrows) {
+        this.root = root;
+        this.length = length;
+        this.arrows = arrows;
+
+        this.leftArrows = new ArrayList<>();
+        this.rightArrows = new ArrayList<>();
+        this.topArrows = new ArrayList<>();
+        this.bottomArrows = new ArrayList<>();
     }
 
-    public void handleCheckWin() {
-        if (checkWin(up, down, left, right)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("You won!");
-            alert.setTitle(null);
-            Optional<ButtonType> option = alert.showAndWait();
-            if (option.get() == ButtonType.OK) {
-                exitToMainMenu();
-            }
-
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Incorrect answer.");
-            alert.setTitle(null);
-            Optional<ButtonType> option = alert.showAndWait();
-        }
+    protected Game(Group root, Arrows arrows) {
+        this(root, 0, arrows);
     }
 
-    private void buildArrowArrays() {
-        ArrowArrayBuilder builder = new ArrowArrayBuilder(up, down, left, right, length);
-        numbersArray = builder.build();
 
-    }
 
+    //static fabric methods
 
     public static Game normalGame(Group root, int length, Arrows arrows) {
         Game game = new Game(root, length, arrows);
@@ -94,14 +73,7 @@ public class Game {
         return game;
     }
 
-    public static Game customGame(Group root, int length, Arrows arrows){
-
-        Game game = new Game(root,length,arrows);
-
-        return game;
-    }
-
-    public static Game loadedGame(Group root, Arrows arrows) { //static fabric method for game loaded from a file
+    public static Game loadedGame(Group root, Arrows arrows) {
         Game game = new Game(root, arrows);
 
         FileChooser fileChooser = new FileChooser();
@@ -118,6 +90,9 @@ public class Game {
         return game;
     }
 
+
+
+    //initialization
     private void initArrowArrays() {
         this.up = new ArrowArray(this.length, ArrowArray.Name.UP);
         this.down = new ArrowArray(this.length, ArrowArray.Name.DOWN);
@@ -126,22 +101,7 @@ public class Game {
         this.numbersArray = new NumbersArray(this.length);
     }
 
-    public Game(Group root, int length, Arrows arrows) {
-        this.root = root;
-        this.length = length;
-        this.arrows = arrows;
-
-        this.leftArrows = new ArrayList<>();
-        this.rightArrows = new ArrayList<>();
-        this.topArrows = new ArrayList<>();
-        this.bottomArrows = new ArrayList<>();
-    }
-
-    public Game(Group root, Arrows arrows) {
-        this(root, 0, arrows);
-    }
-
-    private void initNodes() {
+    protected void initNodes() {
 
         double gridWidth = WIDTH / (length + 2);
         double gridHeight = HEIGHT / (length + 2);
@@ -212,7 +172,15 @@ public class Game {
         }
     }
 
-    private char generateArrow() {
+    private void buildArrowArrays() {
+        ArrowArrayBuilder builder = new ArrowArrayBuilder(up, down, left, right, length);
+        numbersArray = builder.build();
+
+    }
+
+    //utility
+
+    protected char generateArrow() {
         Random random = new Random();
         switch (random.nextInt(3)) {
             case 0:
@@ -245,6 +213,8 @@ public class Game {
         }
     }
 
+    //exiting
+
     private void exitToMainMenu() {
         root.getScene().getWindow().hide();
         Main main = new Main();
@@ -269,6 +239,8 @@ public class Game {
         }
     }
 
+    //saving game
+
     public void saveGame() {
         FileChooser fileChooser = new FileChooser();
 
@@ -283,7 +255,7 @@ public class Game {
         }
     }
 
-    private void saveTextToFile(File file) {
+    protected void saveTextToFile(File file) {
         try (FileWriter writer = new FileWriter(file)) {
             writer.write(this.length + "\n");
 
@@ -331,6 +303,49 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+    //checking win
+
+    private boolean checkWin(ArrowArray up, ArrowArray down, ArrowArray left, ArrowArray right) {
+
+        int i = 0;
+        while (i < up.getLength()) {
+            if (up.getCharAt(i) != topArrows.get(i).getValue()) {
+                return false;
+            }
+            if (right.getCharAt(i) != rightArrows.get(i).getValue()) {
+                return false;
+            }
+            if (left.getCharAt(i) != leftArrows.get(i).getValue()) {
+                return false;
+            }
+            if (down.getCharAt(i) != bottomArrows.get(i).getValue()) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+
+    public void handleCheckWin() {
+        if (checkWin(up, down, left, right)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("You won!");
+            alert.setTitle(null);
+            Optional<ButtonType> option = alert.showAndWait();
+            if (option.get() == ButtonType.OK) {
+                exitToMainMenu();
+            }
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Incorrect answer.");
+            alert.setTitle(null);
+            Optional<ButtonType> option = alert.showAndWait();
+        }
+    }
+
+    //loading game
 
     private static void loadGame(Game game, File selectedFile) {
         try (Scanner scanner =new Scanner (new FileReader(selectedFile))) {
@@ -393,70 +408,5 @@ public class Game {
         }
     }
 
-    private void initCustomNodes(){ // generates map to create a custom game
-        double gridWidth = WIDTH / (length + 2);
-        double gridHeight = HEIGHT / (length + 2);
 
-        int arrayIteratorX = -1;
-
-        for (int i = 0; i < length + 2; i++) {
-
-            int arrayIteratorY = 0;
-
-            for (int j = 0; j < length + 2; j++) {
-
-
-                if (i != 0 && i < length + 1 && j != 0 && j < length + 1) { // if node is not on the edges of the grid then it becomes an int node with numerical value
-
-                    CustomNode node = new CustomNode(i * gridWidth, j * gridHeight, gridWidth, gridHeight);
-                    root.getChildren().add(node);
-
-                } else { // otherwise arrow node is being generated
-
-                    char arrow = '|';
-
-                    if ((i == length + 1 && j == length + 1) || (i == 0 && j == 0)) { // nothing happens on the corners
-
-                    } else if (i == 0 && j == length + 1) {
-
-                        SaveNode saveNode = new SaveNode(i * gridWidth, j * gridHeight, gridWidth, gridHeight, this);
-                        root.getChildren().add(saveNode);
-
-                    } else if (i == length + 1 && j == 0) {
-                        ExitNode exitNode = new ExitNode(i * gridWidth, j * gridHeight, gridWidth, gridHeight, this);
-                        root.getChildren().add(exitNode);
-                    }
-
-
-                    else if (i == 0) { // arrows on the left side of the array
-
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.LEFT, j - 1, this.length);
-                        root.getChildren().add(node);
-                        leftArrows.add(node);
-
-                    } else if (i == length + 1) { //arrows on the right side of the array
-
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.RIGHT, j - 1, this.length);
-                        root.getChildren().add(node);
-                        rightArrows.add(node);
-
-                    } else if (j == 0) { //arrows on the upper side of of the array
-
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.UP, i - 1, this.length);
-                        root.getChildren().add(node);
-                        topArrows.add(node);
-
-                    } else { //arrows on the bottom side of the array
-
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.DOWN, i - 1, this.length);
-                        root.getChildren().add(node);
-                        bottomArrows.add(node);
-                    }
-
-                }
-
-            }
-            arrayIteratorX++;
-        }
-    }
 }

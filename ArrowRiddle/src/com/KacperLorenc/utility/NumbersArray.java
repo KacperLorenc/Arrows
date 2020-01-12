@@ -1,21 +1,19 @@
 package com.KacperLorenc.utility;
 
+// this class uses ArrowArrays to populate its content
+// by adding +1 into every cell that is being pointed at by an arrow
+
 public class NumbersArray {
     private int[][] tab;
     private int length;
 
+    //constructor
     public NumbersArray(int length) {
         this.length = length;
         tab = new int[length][length];
     }
-    public int getIntAt(int i, int j){
-        return tab[i][j];
-    }
-    public void setIntAt(int i, int j, int integer){
-        if (i>= 0 && i < this.length && j>=0 && j<this.length )
-            tab[i][j] = integer;
-    }
 
+    //generating array
     public void populate(ArrowArray up, ArrowArray down, ArrowArray left, ArrowArray right){
 
      if(up.getLength() != this.length || down.getLength() != this.length ||
@@ -53,16 +51,21 @@ public class NumbersArray {
 
 
     }
+
+    //utility
+
     private void addInRow(int index){
         for (int i = 0; i < this.length; i++){
             tab[i][index]+=1;
         }
     }
+
     private void addInColumn(int index){
         for (int i = 0; i < this.length; i++){
             tab[index][i]+=1;
         }
     }
+
     private void upAddAtAnAngle(int index, char arrow){
         int j = 0;
         if(arrow == '/'){
@@ -76,6 +79,7 @@ public class NumbersArray {
             }
         }
     }
+
     private void downAddAtAnAngle(int index, char arrow){
         int j = this.length -1;
         if(arrow == 92){  // '\'
@@ -89,6 +93,7 @@ public class NumbersArray {
             }
         }
     }
+
     private void leftAddAtAnAngle(int index, char arrow){
         int j = 0;
         if(arrow == '/'){
@@ -102,6 +107,7 @@ public class NumbersArray {
             }
         }
     }
+
     private void rightAddAtAnAngle(int index, char arrow){
         int j = this.length-1;
         if(arrow == '/'){
@@ -114,5 +120,16 @@ public class NumbersArray {
                 tab[j--][i]+=1;
             }
         }
+    }
+
+    //setters and getters
+
+    public void setIntAt(int i, int j, int integer){
+        if (i>= 0 && i < this.length && j>=0 && j<this.length )
+            tab[i][j] = integer;
+    }
+
+    public int getIntAt(int i, int j){
+        return tab[i][j];
     }
 }

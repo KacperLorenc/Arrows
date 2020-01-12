@@ -13,8 +13,9 @@
     </Label>
 
     <VBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1" translateX="5">
-        <Button prefWidth="120" text="New Game" onMouseClicked="#startGame"/>
         <ComboBox GridPane.columnIndex="0" GridPane.rowIndex="1" prefWidth="120" fx:id="arraySize"/>
+        <Button prefWidth="120" text="New Game" onMouseClicked="#startGame"/>
+        <Button prefWidth="120" text="Custom Game" onMouseClicked="#customGame"/>
         <Button GridPane.columnIndex="0" GridPane.rowIndex="2" prefWidth="120" text="Load Game" onMouseClicked="#loadGame"/>
     </VBox>
 

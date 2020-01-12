@@ -2,6 +2,7 @@ package com.KacperLorenc.mainMenu;
 
 import com.KacperLorenc.game.Arrows;
 
+import com.KacperLorenc.game.Game;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,15 +22,19 @@ public class MainMenuController {
     @FXML
     Button exitButton;
 
+    //init
+
     public void initialize() {
         ObservableList<String> sizes = FXCollections.observableArrayList("2x2", "3x3", "4x4", "5x5", "6x6", "7x7", "8x8");
         arraySize.setItems(sizes);
         arraySize.setValue("3x3");
     }
 
+    //type of game
+
     public void startGame() {
         Stage primaryStage = new Stage();
-        Arrows arrows = new Arrows(arrayLength(),false);
+        Arrows arrows = new Arrows(arrayLength(),Game.gameType.NEW_GAME);
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.hide();
 
@@ -39,9 +44,10 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
+
     public void loadGame(){
         Stage primaryStage = new Stage();
-        Arrows arrows = new Arrows(arrayLength(),true);
+        Arrows arrows = new Arrows(arrayLength(),Game.gameType.LOADED_GAME);
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.hide();
 
@@ -53,6 +59,21 @@ public class MainMenuController {
                 }
             });
     }
+
+    public void customGame() {
+        Stage primaryStage = new Stage();
+        Arrows arrows = new Arrows(arrayLength(), Game.gameType.CUSTOM_GAME);
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.hide();
+
+        try {
+            arrows.start(primaryStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //utility
 
     private int arrayLength() {
         String s = arraySize.getSelectionModel().getSelectedItem();
@@ -71,4 +92,5 @@ public class MainMenuController {
             stage.close();
         }
     }
+
 }

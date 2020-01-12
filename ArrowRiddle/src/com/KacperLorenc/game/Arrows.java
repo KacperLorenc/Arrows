@@ -10,7 +10,7 @@ public class Arrows extends Application {
     private Group root;
     public Stage primaryStage;
     private int length;
-    private boolean loaded;
+    Game.gameType type;
 
 
     @Override
@@ -18,19 +18,27 @@ public class Arrows extends Application {
         root = new Group();
         Game game;
 
-        if (loaded) {
-            game = Game.loadedGame(root, this);
-        } else {
-            game = Game.normalGame(root, this.length, this);
+        switch (type){
+            case NEW_GAME:
+                game = Game.normalGame(root, this.length, this);
+                break;
+            case LOADED_GAME:
+                game = Game.loadedGame(root, this);
+                break;
+            default:
+                game = CustomGame.customGame(root,length,this);
+            break;
         }
 
         primaryStage.setTitle("Arrows");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.setResizable(false);
+
         primaryStage.setOnCloseRequest(event -> {
             event.consume();
             game.doYouWantToExit();
         });
+
         this.primaryStage = primaryStage;
         primaryStage.show();
     }
@@ -40,9 +48,9 @@ public class Arrows extends Application {
         launch(args);
     }
 
-    public Arrows(int length, boolean loaded) {
+    public Arrows(int length, Game.gameType type) {
         this.length = length;
-        this.loaded = loaded;
+        this.type = type;
     }
 
 }

@@ -2,6 +2,8 @@ package com.KacperLorenc.utility;
 
 import java.util.Random;
 
+//object of this class will hold char values as arrows
+
 public class ArrowArray {
     private char[] tab;
     private int length;
@@ -11,15 +13,15 @@ public class ArrowArray {
         UP, DOWN, LEFT, RIGHT;
     }
 
-    public int getLength() {
-        return length;
-    }
+    //constructor
 
     public ArrowArray(int length, Name name) {
         this.tab = new char[length];
         this.length = length;
         this.name = name;
     }
+
+    //initialization
 
     public void initArray() {
         Random random = new Random();
@@ -38,13 +40,7 @@ public class ArrowArray {
         }
     }
 
-    public char getCharAt(int i) {
-        return tab[i];
-    }
-    public void setChar(int i, char c){
-        if(i>=0 && i <this.length)
-        tab[i] = c;
-    }
+    //utility
 
     private void putChar(int r, int i) {
         //Check if we are putting char on the edge of an array
@@ -119,8 +115,8 @@ public class ArrowArray {
                     }
                 }
             } else if (this.name == Name.RIGHT) {
-                //The indexes of right array will have the same
-                //indexing pattern as left array.
+                //The indexes of right array have the same
+                //pattern as left arrays.
                 if (i == 0) {
                     switch (r) {
                         case 0:
@@ -156,6 +152,21 @@ public class ArrowArray {
                     break;
             }
         }
+    }
+
+    //getters and setters
+
+    public int getLength() {
+        return length;
+    }
+
+    public char getCharAt(int i) {
+        return tab[i];
+    }
+
+    public void setChar(int i, char c){
+        if(i>=0 && i <this.length)
+            tab[i] = c;
     }
 }
 

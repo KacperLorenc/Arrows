@@ -4,11 +4,15 @@ import com.KacperLorenc.utility.ArrowArray;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+//this node hold a char value and displays it as an arrow
+
 public class ArrowNode extends Node {
     private char value;
     private ArrowArray.Name name;
     private int index;
     private int length;
+
+    //constructor
 
     public ArrowNode(char value, double x, double y, double width, double height, ArrowArray.Name name, int index, int length) {
         super(x, y, width, height);
@@ -28,10 +32,7 @@ public class ArrowNode extends Node {
         changeValue(); // to eliminate unwanted arrows from critical points
     }
 
-    public void setValue(char value) { //set value and update label
-        this.value = value;
-        updateLabel();
-    }
+    //utility
 
     private void changeValue() { // change value of a node on click
 
@@ -132,7 +133,14 @@ public class ArrowNode extends Node {
 
     }
 
+    //setters and getters
+
     public char getValue() { //returns value
         return value;
+    }
+
+    public void setValue(char value) { //set value and update label
+        this.value = value;
+        updateLabel();
     }
 }

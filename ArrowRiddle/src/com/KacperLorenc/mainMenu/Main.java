@@ -14,10 +14,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
         Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+
         primaryStage.setTitle("Arrows");
         primaryStage.setScene(new Scene(root, 400, 400));
         primaryStage.setResizable(false);
+
         primaryStage.setOnCloseRequest(event->{
             event.consume();
             
@@ -30,9 +33,9 @@ public class Main extends Application {
                 primaryStage.close();
             }
         });
+
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

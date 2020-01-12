@@ -6,7 +6,7 @@ import com.KacperLorenc.game.Game;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-
+//this node lets one check the answer
 
 public class CheckNode extends Node {
 
