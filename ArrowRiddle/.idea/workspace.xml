@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/KacperLorenc/main_menu/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/KacperLorenc/main_menu/MainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/KacperLorenc/main_menu/mainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrowRiddle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ArrowRiddle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/META-INF/ArrowRiddle.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/game/Arrows.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/game/Arrows.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/game/CustomGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/game/CustomGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/game/Game$gameType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/game/Game$gameType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/game/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/mainMenu/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/mainMenu/MainMenuController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/mainMenu/mainMenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/ArrowNode$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/ArrowNode$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/ArrowNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/ArrowNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/CustomIntNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/CustomIntNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/ExitNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/ExitNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/IntNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/IntNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/SaveNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/nodes/SaveNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/utility/ArrowArray$Name.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/utility/ArrowArray$Name.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/utility/ArrowArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/utility/ArrowArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/utility/NumbersArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ArrowRiddle/com/KacperLorenc/utility/NumbersArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/KacperLorenc/game/CustomGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/KacperLorenc/game/CustomGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/KacperLorenc/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/KacperLorenc/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/KacperLorenc/mainMenu/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/KacperLorenc/mainMenu/MainMenuController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/KacperLorenc/mainMenu/mainMenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/KacperLorenc/nodes/ArrowNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/KacperLorenc/nodes/ArrowNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/KacperLorenc/nodes/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/KacperLorenc/nodes/Node.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,12 +95,17 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1W5OfNAmyBHLnZPCa94Fys5RSp5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -77,9 +113,15 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
@@ -124,22 +166,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Arrows" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.display.Arrows" />
-      <module name="ArrowRiddle" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.display.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.KacperLorenc.mainMenu.Main" />
+      <option name="MAIN_CLASS_NAME" value="com.KacperLorenc.main_menu.Main" />
       <module name="ArrowRiddle" />
       <extension name="coverage">
         <pattern>
@@ -155,6 +183,103 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArrowArrayBuilderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArrowRiddle" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.KacperLorenc.jUnit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.KacperLorenc.jUnit" />
+      <option name="MAIN_CLASS_NAME" value="com.KacperLorenc.jUnit.ArrowArrayBuilderTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArrowRiddle" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.KacperLorenc.jUnit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.KacperLorenc.jUnit" />
+      <option name="MAIN_CLASS_NAME" value="com.KacperLorenc.jUnit.GameTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTests.testCustomGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArrowRiddle" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.KacperLorenc.jUnit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.KacperLorenc.jUnit" />
+      <option name="MAIN_CLASS_NAME" value="com.KacperLorenc.jUnit.GameTests" />
+      <option name="METHOD_NAME" value="testCustomGame" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTests.testNormalGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArrowRiddle" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.KacperLorenc.jUnit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.KacperLorenc.jUnit" />
+      <option name="MAIN_CLASS_NAME" value="com.KacperLorenc.jUnit.GameTests" />
+      <option name="METHOD_NAME" value="testNormalGame" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MoveTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ArrowRiddle" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.KacperLorenc.jUnit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.KacperLorenc.jUnit" />
+      <option name="MAIN_CLASS_NAME" value="com.KacperLorenc.jUnit.MoveTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -192,11 +317,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Arrows" />
+      <item itemvalue="JUnit.ArrowArrayBuilderTests" />
+      <item itemvalue="JUnit.MoveTests" />
+      <item itemvalue="JUnit.GameTests" />
+      <item itemvalue="JUnit.GameTests.testNormalGame" />
+      <item itemvalue="JUnit.GameTests.testCustomGame" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Arrows" />
+        <item itemvalue="JUnit.GameTests.testCustomGame" />
+        <item itemvalue="JUnit.GameTests.testNormalGame" />
+        <item itemvalue="JUnit.GameTests" />
+        <item itemvalue="JUnit.MoveTests" />
+        <item itemvalue="JUnit.ArrowArrayBuilderTests" />
       </list>
     </recent_temporary>
   </component>
@@ -216,6 +349,19 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1302000" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />

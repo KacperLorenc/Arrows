@@ -1,4 +1,4 @@
-package com.KacperLorenc.mainMenu;
+package com.KacperLorenc.main_menu;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import java.lang.*?>
-<GridPane fx:controller="com.KacperLorenc.mainMenu.MainMenuController"
+<GridPane fx:controller="com.KacperLorenc.main_menu.MainMenuController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="30">
 
     <Label text="Arrows" GridPane.columnIndex="0" GridPane.rowIndex="0" translateX="-4">
@@ -21,5 +21,6 @@
 
     <Button GridPane.columnIndex="0" GridPane.rowIndex="3" prefWidth="120" fx:id="exitButton" text="Exit" onMouseClicked="#exitGame"
             translateX="5"/>
+    <Button GridPane.columnIndex="0" GridPane.rowIndex="3" prefWidth="60" text="Info" translateX="170" onMouseClicked="#showInfo"/>
 
 </GridPane>

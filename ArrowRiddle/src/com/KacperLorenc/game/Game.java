@@ -1,9 +1,10 @@
 package com.KacperLorenc.game;
 
-import com.KacperLorenc.mainMenu.Main;
+import com.KacperLorenc.main_menu.Main;
 import com.KacperLorenc.nodes.*;
 import com.KacperLorenc.utility.ArrowArrayBuilder;
 import com.KacperLorenc.utility.ArrowArray;
+import com.KacperLorenc.utility.Move;
 import com.KacperLorenc.utility.NumbersArray;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
@@ -21,6 +22,7 @@ public class Game {
 
     protected Group root;
     protected Arrows arrows;
+    public UndoNode undoNode;
     public int length;
 
     public enum gameType{
@@ -30,16 +32,17 @@ public class Game {
     protected static final double WIDTH = 800;
     protected static final double HEIGHT = 600;
 
-    protected ArrayList<ArrowNode> leftArrows;
-    protected ArrayList<ArrowNode> rightArrows;
-    protected ArrayList<ArrowNode> topArrows;
-    protected ArrayList<ArrowNode> bottomArrows;
+    private ArrayList<ArrowNode> leftArrows;
+    private ArrayList<ArrowNode> rightArrows;
+    private ArrayList<ArrowNode> topArrows;
+    private ArrayList<ArrowNode> bottomArrows;
 
     private ArrowArray up;
     private ArrowArray down;
     private ArrowArray left;
     private ArrowArray right;
     private NumbersArray numbersArray;
+    public Stack <Move> playersMoves;
 
     //Constructors
 
@@ -59,13 +62,12 @@ public class Game {
     }
 
 
-
     //static fabric methods
 
     public static Game normalGame(Group root, int length, Arrows arrows) {
         Game game = new Game(root, length, arrows);
 
-        game.initArrowArrays();
+        game.initArrays();
         game.buildArrowArrays();
         game.initNodes();
         game.printArraysInConsole();
@@ -91,14 +93,14 @@ public class Game {
     }
 
 
-
     //initialization
-    private void initArrowArrays() {
+    private void initArrays() {
         this.up = new ArrowArray(this.length, ArrowArray.Name.UP);
         this.down = new ArrowArray(this.length, ArrowArray.Name.DOWN);
         this.left = new ArrowArray(this.length, ArrowArray.Name.LEFT);
         this.right = new ArrowArray(this.length, ArrowArray.Name.RIGHT);
         this.numbersArray = new NumbersArray(this.length);
+        this.playersMoves = new Stack<>();
     }
 
     protected void initNodes() {
@@ -124,7 +126,10 @@ public class Game {
 
                     char arrow = generateArrow(); // generate random arrow
 
-                    if ((i == length + 1 && j == length + 1)) { // nothing happens on the corners
+                    if ((i == length + 1 && j == length + 1)) {
+
+                        undoNode = new UndoNode(i * gridWidth, j * gridHeight, gridWidth, gridHeight, this);
+                        root.getChildren().add(undoNode);
 
                     } else if (i == 0 && j == length + 1) {
 
@@ -141,25 +146,25 @@ public class Game {
 
                     } else if (i == 0) { // arrows on the left side of the array
 
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.LEFT, j - 1, this.length);
+                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.LEFT, j - 1, this.length,this);
                         root.getChildren().add(node);
                         leftArrows.add(node);
 
                     } else if (i == length + 1) { //arrows on the right side of the array
 
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.RIGHT, j - 1, this.length);
+                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.RIGHT, j - 1, this.length,this);
                         root.getChildren().add(node);
                         rightArrows.add(node);
 
                     } else if (j == 0) { //arrows on the upper side of of the array
 
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.UP, i - 1, this.length);
+                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.UP, i - 1, this.length,this);
                         root.getChildren().add(node);
                         topArrows.add(node);
 
                     } else { //arrows on the bottom side of the array
 
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.DOWN, i - 1, this.length);
+                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.DOWN, i - 1, this.length,this);
                         root.getChildren().add(node);
                         bottomArrows.add(node);
 
@@ -210,6 +215,47 @@ public class Game {
         System.out.print("  ");
         for (int i = 0; i < length; i++) {
             System.out.print(down.getCharAt(i) + " ");
+        }
+    }
+
+    public void undoMove(){
+        if(!this.playersMoves.isEmpty()) {
+            Move previousMove = this.playersMoves.pop();
+
+            switch (previousMove.getName()) {
+                case LEFT:
+                    for (ArrowNode node : leftArrows) {
+                        if (node.getIndex() == previousMove.getPosition()) {
+                            node.updateValue(previousMove.getArrow());
+                            break;
+                        }
+                    }
+                    break;
+                case UP:
+                    for (ArrowNode node : topArrows) {
+                        if (node.getIndex() == previousMove.getPosition()) {
+                            node.updateValue(previousMove.getArrow());
+                            break;
+                        }
+                    }
+                    break;
+                case RIGHT:
+                    for (ArrowNode node : rightArrows) {
+                        if (node.getIndex() == previousMove.getPosition()) {
+                            node.updateValue(previousMove.getArrow());
+                            break;
+                        }
+                    }
+                    break;
+                case DOWN:
+                    for (ArrowNode node : bottomArrows) {
+                        if (node.getIndex() == previousMove.getPosition()) {
+                            node.updateValue(previousMove.getArrow());
+                            break;
+                        }
+                    }
+                    break;
+            }
         }
     }
 
@@ -330,7 +376,7 @@ public class Game {
     public void handleCheckWin() {
         if (checkWin(up, down, left, right)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("You won!");
+            alert.setHeaderText("You win!");
             alert.setTitle(null);
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {
@@ -352,7 +398,7 @@ public class Game {
 
             int length = scanner.nextInt();
             game.length = length;
-            game.initArrowArrays();
+            game.initArrays();
 
             scanner.nextLine();
 
@@ -407,6 +453,8 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+
 
 
 }

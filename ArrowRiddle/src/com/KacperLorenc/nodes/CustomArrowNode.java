@@ -2,22 +2,17 @@ package com.KacperLorenc.nodes;
 
 import com.KacperLorenc.game.Game;
 import com.KacperLorenc.utility.ArrowArray;
-import com.KacperLorenc.utility.Move;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-//this node hold a char value and displays it as an arrow
-
-public class ArrowNode extends Node {
+public class CustomArrowNode extends Node {
     private char value;
     private ArrowArray.Name name;
     private int index;
     private int length;
     private Game game;
 
-    //constructor
-
-    public ArrowNode(char value, double x, double y, double width, double height, ArrowArray.Name name, int index, int length, Game game) {
+    public CustomArrowNode(char value, double x, double y, double width, double height, ArrowArray.Name name, int index, int length, Game game) {
         super(x, y, width, height);
 
         this.value = value;
@@ -29,22 +24,16 @@ public class ArrowNode extends Node {
         this.rectangle.setFill(Color.CORNFLOWERBLUE);
         this.rectangle.setStroke(Color.BLACK);
         this.rectangle.setOnMouseClicked(eventHandler -> {
-            updateStack();
             updateValue();
-            updateUndoNode();
         });
 
         this.label.setFont(new Font("Arial", 30));
         this.label.setOnMouseClicked(eventHandler -> {
-            updateStack();
             updateValue();
-            updateUndoNode();
         });
 
         updateValue(); // to eliminate unwanted arrows from critical points
     }
-
-    //update
 
     private void updateValue() { // change value of a node on click
 
@@ -99,11 +88,6 @@ public class ArrowNode extends Node {
         updateLabel();
     }
 
-    public void updateValue(char arrow) {
-        this.value = arrow;
-        updateLabel();
-    }
-
     private void updateLabel() { // convert values to unicode arrows that can be displayed on the screen
         switch (this.name) {
             case UP:
@@ -150,27 +134,7 @@ public class ArrowNode extends Node {
 
     }
 
-    private void updateStack() {
-        Move move = new Move(this.index, this.value, this.name);
-        game.playersMoves.push(move);
-    }
-
-    public void updateUndoNode() {
-            this.game.undoNode.setRectangleColor();
-    }
-
-    //setters and getters
-
     public char getValue() { //returns value
         return value;
-    }
-
-    public void setValue(char value) { //set value and update label
-        this.value = value;
-        updateLabel();
-    }
-
-    public int getIndex() {
-        return index;
     }
 }

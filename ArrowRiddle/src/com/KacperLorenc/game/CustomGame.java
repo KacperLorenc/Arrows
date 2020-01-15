@@ -1,6 +1,6 @@
 package com.KacperLorenc.game;
 
-import com.KacperLorenc.nodes.ArrowNode;
+import com.KacperLorenc.nodes.CustomArrowNode;
 import com.KacperLorenc.nodes.CustomIntNode;
 import com.KacperLorenc.nodes.ExitNode;
 import com.KacperLorenc.nodes.SaveNode;
@@ -13,10 +13,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomGame extends Game {
-    List<CustomIntNode> customIntNodes;
+public final class CustomGame extends Game {
+    private List<CustomIntNode> customIntNodes;
+    private ArrayList<CustomArrowNode> leftArrows;
+    private ArrayList<CustomArrowNode> rightArrows;
+    private ArrayList<CustomArrowNode> topArrows;
+    private ArrayList<CustomArrowNode> bottomArrows;
 
-    public CustomGame(Group root, Arrows arrows, int length) {
+    private CustomGame(Group root, Arrows arrows, int length) {
         super(root,length,arrows);
         customIntNodes = new ArrayList<>();
     }
@@ -24,6 +28,10 @@ public class CustomGame extends Game {
     public static CustomGame customGame(Group root, int length, Arrows arrows){
 
         CustomGame game = new CustomGame(root,arrows,length);
+        game.leftArrows = new ArrayList<>();
+        game.rightArrows = new ArrayList<>();
+        game.topArrows = new ArrayList<>();
+        game.bottomArrows = new ArrayList<>();
 
         game.initNodes();
 
@@ -68,25 +76,25 @@ public class CustomGame extends Game {
 
                     else if (i == 0) { // arrows on the left side of the array
 
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.LEFT, j - 1, this.length);
+                        CustomArrowNode node = new CustomArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.LEFT, j - 1, this.length,this);
                         root.getChildren().add(node);
                         leftArrows.add(node);
 
                     } else if (i == length + 1) { //arrows on the right side of the array
 
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.RIGHT, j - 1, this.length);
+                        CustomArrowNode node = new CustomArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.RIGHT, j - 1, this.length,this);
                         root.getChildren().add(node);
                         rightArrows.add(node);
 
                     } else if (j == 0) { //arrows on the upper side of of the array
 
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.UP, i - 1, this.length);
+                        CustomArrowNode node = new CustomArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.UP, i - 1, this.length,this);
                         root.getChildren().add(node);
                         topArrows.add(node);
 
                     } else { //arrows on the bottom side of the array
 
-                        ArrowNode node = new ArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.DOWN, i - 1, this.length);
+                        CustomArrowNode node = new CustomArrowNode(arrow, i * gridWidth, j * gridHeight, gridWidth, gridHeight, ArrowArray.Name.DOWN, i - 1, this.length,this);
                         root.getChildren().add(node);
                         bottomArrows.add(node);
                     }
@@ -106,19 +114,19 @@ public class CustomGame extends Game {
             //Arrow Arrays - the user saves chosen values of Arrow Nodes as a solution to the riddle,
             // so those values will be read to arrow arrays
 
-            for (ArrowNode arrow : leftArrows){
+            for (CustomArrowNode arrow : leftArrows){
                 writer.write(arrow.getValue());
                 writer.write("\n");
             }
-            for (ArrowNode arrow : topArrows){
+            for (CustomArrowNode arrow : topArrows){
                 writer.write(arrow.getValue());
                 writer.write("\n");
             }
-            for (ArrowNode arrow : rightArrows){
+            for (CustomArrowNode arrow : rightArrows){
                 writer.write(arrow.getValue());
                 writer.write("\n");
             }
-            for (ArrowNode arrow : bottomArrows){
+            for (CustomArrowNode arrow : bottomArrows){
                 writer.write(arrow.getValue());
                 writer.write("\n");
             }

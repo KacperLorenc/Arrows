@@ -1,4 +1,4 @@
-package com.KacperLorenc.mainMenu;
+package com.KacperLorenc.main_menu;
 
 import com.KacperLorenc.game.Arrows;
 
@@ -93,4 +93,26 @@ public class MainMenuController {
         }
     }
 
+    public void showInfo() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Info");
+        alert.setHeaderText(null);
+        alert.setContentText("Welcome to Arrows!\n\nPick array size from a dropdown menu and click New Game." +
+                " If you previously started a game and saved it, choose Load Game to start where you finished!" +
+                " If you feel creative, You can choose a Custom Game option to create your own riddle." +
+                "\n\nHow to play:\n\n" +
+                "Every cell holds a numerical value. To win, point as many arrows on each cell, as its number says." +
+                "\n\nControls:\n" +
+                "\nGame:\n" +
+                "-left mouse click on cells with arrows to point them in wanted direction\n" +
+                "-left mouse click on Check button to check your answer\n" +
+                "-left mouse click on Save button to save game\n" +
+                "-left mouse click on Exit button to exit to main menu\n" +
+                "-left mouse click on Undo if its color is blue to undo your move\n\n" +
+                "Custom Game:\n" +
+                "-left mouse click on cells with arrows to point them in wanted direction - they will become a valid answer when loaded as a new game\n" +
+                "-left mouse click on cells with numbers to increase their values\n" +
+                "-right mouse click to decrease their values\n\n");
+        alert.showAndWait();
+    }
 }
